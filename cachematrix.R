@@ -1,5 +1,6 @@
-## Put comments here that give an overall description of what your
-## functions do
+## R Programming Assignment 2
+## This function calculate the inverse of a matrix x and cache it so
+##you don't need to recalculate it every time you need it.
 
 ## Write a short comment describing this function
 
