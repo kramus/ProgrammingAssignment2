@@ -11,13 +11,13 @@ makeCacheMatrix <- function(x = matrix()) {
         #the matrix assigned in the argument x
         #in the function makeCacheMatrix
         set <- function(y){
-                X <<- y 
+                x <<- y 
                 inv <<- NULL
         }
         #A function that returns the matrix stored in x
         #in order to later calculate the inverse.
         get <- function() x
-        #This function stores the calculated inverse matrix into m
+        #This function stores the calculated inverse matrix into inv
         setinverse <- function(inversa) inv <<- inversa
         #This function returns the inverse matrix.
         getinverse <- function() inv
@@ -41,8 +41,21 @@ cacheSolve <- function(x, ...) {
         }
         #If the inv matrix is null, we proceed to calculate it.
         data <- x$get() #get matrix stored in makeCacheMatrix function
-        m <- solve(data, ...) #calculate the inverse of the matrix
-        x$setinverse(m) #add the value of the inverse matrix
+        inv <- solve(data, ...) #calculate the inverse of the matrix
+        x$setinverse(inv) #add the value of the inverse matrix
                         #to the function setinverse
-        m
+        inv
 }
+
+
+#####Evaluating the functions#######
+m1 <- makeCacheMatrix(matrix(1:4, ncol=2))
+m1$get()
+cacheSolve(m1)
+m2 <- makeCacheMatrix(matrix(c(5,3,6,7,8,2,1,2,9), ncol=3))
+m2$get()
+cacheSolve(m2)
+m2$set(matrix(c(4,3,2,2),ncol=2))
+m2$get()
+cacheSolve(m2)
+              
